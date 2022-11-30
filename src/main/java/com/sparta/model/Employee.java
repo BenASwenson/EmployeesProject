@@ -6,14 +6,14 @@ public class Employee {
 
     // Employee fields
     private int emp_no;
-    private Date birth_date;
+    private String birth_date;
     private String first_name;
     private String last_name;
     private char gender;
-    private Date hire_date;
+    private String hire_date;
 
     //employee constructor to create an employee to place in List<>
-    public Employee(int emp_no, Date birth_date, String first_name, String last_name, char gender, Date hire_date)
+    public Employee(int emp_no, String birth_date, String first_name, String last_name, char gender, String hire_date)
     {
         this.emp_no = emp_no;
         this.birth_date = birth_date;
@@ -34,11 +34,11 @@ public class Employee {
         this.emp_no = emp_no;
     }
 
-    public Date getBirth_date() {
+    public String getBirth_date() {
         return birth_date;
     }
 
-    public void setBirth_date(Date birth_date) {
+    public void setBirth_date(String birth_date) {
         this.birth_date = birth_date;
     }
 
@@ -66,11 +66,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Date getHire_date() {
+    public String getHire_date() {
         return hire_date;
     }
 
-    public void setHire_date(Date hire_date) {
+    public void setHire_date(String hire_date) {
         this.hire_date = hire_date;
     }
 }

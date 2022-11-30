@@ -2,6 +2,7 @@ package com.sparta.controller;
 
 import com.sparta.model.Employee;
 import com.sparta.model.RandomGenerator;
+import com.sparta.model.SplitEmployeeData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,14 +15,17 @@ public class Main {
 
         String[] randomEmployeesList = generateTheEmployees.generateEmployees(); //store the random number of employees between 1 - 1000 as a String array
 
+        SplitEmployeeData temp = new SplitEmployeeData();
+        temp.employeeToList(randomEmployeesList);
+
         /*
         * just for printing purposes to check if we have the random employees in the string array*/
-        int counter = 0;
-        for (String b : randomEmployeesList)
-        {
-            System.out.println(randomEmployeesList[counter]);
-            counter++;
-        }
+//        int counter = 0;
+//        for (String b : randomEmployeesList)
+//        {
+//            System.out.println(randomEmployeesList[counter]);
+//            counter++;
+//        }
 
     }
 }
