@@ -22,7 +22,7 @@ public class BinaryTree{
     }
     void add(Node start, Employee data)
     {
-        if (data.compareTo(start.data) > 0)
+        if (data.compareTo(start.data) < 0)
         //if ((data.getLast_name() + String.valueOf(data.getEmp_no())).compareTo((start.data.getLast_name() + String.valueOf(start.data.getEmp_no()))) > 0)
         {
             if (start.left == null)
@@ -33,16 +33,16 @@ public class BinaryTree{
                 add(start.left, data);
             }
         }
-        else if(data.compareTo(start.data) < 0)
+        else if(data.compareTo(start.data) >= 0)
         {
-            if (start.right == null)
-            {
-                start.right = new Node(data);
-            }
-            else
-            {
-                add(start.right, data);
+            if (!(data.getEmp_no() == start.data.getEmp_no())) {
+                if (start.right == null) {
+                    start.right = new Node(data);
+                } else {
+                    add(start.right, data);
+                }
             }
         }
+
     }
 }
