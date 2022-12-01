@@ -1,5 +1,7 @@
 package com.sparta.model;
 
+import org.w3c.dom.Node;
+
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,8 +22,8 @@ public class SplitEmployeeData {
     * */
     public ArrayList employeeToList(String[] strArray)
     {
-        String[] split = {};
-        String birth_date = null;
+        String[] split;
+        String birth_date;
         String hire_date;
         ArrayList<Employee> employeeList = new ArrayList<>(); //list that will hold the employee objects list
         for(String splitUp : strArray) //loop through the string array and split up the data to pass as an employee object in employeeList
@@ -29,10 +31,8 @@ public class SplitEmployeeData {
             split = splitUp.split(","); //splits the employees by ,
             birth_date = DateFormatter.dateFormat(split[1]);
             hire_date = DateFormatter.dateFormat(split[5]);
-            System.out.println(hire_date);
-            employeeList.add(new Employee(Integer.parseInt(split[0]), birth_date, split[2], split[3], split[4].charAt(0), hire_date)); //adds the created employee object in the list
+            employeeList.add(new Employee(Integer.parseInt(split[0]), birth_date, split[2].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[3].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[4].charAt(0), hire_date)); //adds the created employee object in the list
         }
-        System.out.println(employeeList.get(0).getBirth_date());
 
         return employeeList; // return the employee object list
     }
