@@ -2,7 +2,7 @@ package com.sparta.model;
 
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
 
     // Employee fields
     private int emp_no;
@@ -72,5 +72,10 @@ public class Employee {
 
     public void setHire_date(String hire_date) {
         this.hire_date = hire_date;
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.last_name.compareTo(o.last_name);
     }
 }
