@@ -13,7 +13,7 @@ public class BinaryTree{
     public static Logger logger = LogManager.getLogger(Main.class);
 
 
-    static class Node{
+    public static class Node{
         Employee data;
         Node left;
         Node right;
@@ -24,7 +24,8 @@ public class BinaryTree{
             this.right = null;
         }
     }
-    void add(Node start, Employee data) {
+
+    public void add(Node start, Employee data) {
 
         logger.log(Level.ERROR, "Binary Tree -> add() error!");
         logger.log(Level.WARN, "Binary Tree -> add() warn!");
@@ -33,6 +34,7 @@ public class BinaryTree{
         try {
             if (data.compareTo(start.data) < 0)
             //if ((data.getLast_name() + String.valueOf(data.getEmp_no())).compareTo((start.data.getLast_name() + String.valueOf(start.data.getEmp_no()))) > 0)
+
             {
                 if (start.left == null)
                 {
@@ -56,5 +58,23 @@ public class BinaryTree{
             logger.error(e.getMessage(), e);
         }
 
+    }
+
+    public Employee searchByLastName(String lastName, Node node){
+        if(node != null){
+            if(node.data.getLast_name().equals(lastName)){
+                System.out.println("Employee has been found");
+                return node.data;
+            } else {
+                Employee foundEmployee = searchByLastName(lastName, node.left);
+                if(foundEmployee == null) {
+                    foundEmployee = searchByLastName(lastName, node.right);
+                }
+                return foundEmployee;
+            }
+        } else {
+//            System.out.println("Sorry, employee not found");
+            return null;
+        }
     }
 }
