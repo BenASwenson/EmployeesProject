@@ -1,6 +1,7 @@
 package com.sparta.controller;
 
 import com.sparta.model.Employee;
+import com.sparta.model.JobFactory;
 import com.sparta.model.RandomGenerator;
 import com.sparta.model.SplitEmployeeData;
 
@@ -16,7 +17,8 @@ public class Main {
         String[] randomEmployeesList = generateTheEmployees.generateEmployees(); //store the random number of employees between 1 - 1000 as a String array
 
         SplitEmployeeData temp = new SplitEmployeeData();
-        temp.employeeToList(randomEmployeesList);
+        employees = temp.employeeToList(randomEmployeesList);
+        employees.add(new JobFactory().createEmployee("Developer", 1234556, "1998-10-10", "Emre", "Ceyhan", 'M', "2022-11-11"));
 
         /*
         * just for printing purposes to check if we have the random employees in the string array*/
