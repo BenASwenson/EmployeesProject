@@ -1,5 +1,9 @@
 package com.sparta.model;
 
+import com.sparta.controller.Main;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
 
 import java.awt.*;
@@ -8,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SplitEmployeeData {
+
+    public static Logger logger = LogManager.getLogger(Main.class);
 
 
     /*
@@ -20,21 +26,30 @@ public class SplitEmployeeData {
     System.out.println(employeeList.get(0).getFirst_name()); -> this for instance would print the first name of the first employee in the list
     *
     * */
-    public ArrayList employeeToList(String[] strArray)
-    {
-        String[] split;
-        String birth_date;
-        String hire_date;
-        ArrayList<Employee> employeeList = new ArrayList<>(); //list that will hold the employee objects list
-        for(String splitUp : strArray) //loop through the string array and split up the data to pass as an employee object in employeeList
-        {
-            split = splitUp.split(","); //splits the employees by ,
-            birth_date = DateFormatter.dateFormat(split[1]);
-            hire_date = DateFormatter.dateFormat(split[5]);
-            employeeList.add(new Employee(Integer.parseInt(split[0]), birth_date, split[2].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[3].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[4].charAt(0), hire_date)); //adds the created employee object in the list
+    public ArrayList employeeToList(String[] strArray) {
+
+        logger.log(Level.ERROR, "employeeToList() error!");
+        logger.log(Level.WARN, "employeeToList() warn!");
+
+        try {
+            String[] split;
+            String birth_date;
+            String hire_date;
+            ArrayList<Employee> employeeList = new ArrayList<>(); //list that will hold the employee objects list
+            for(String splitUp : strArray) //loop through the string array and split up the data to pass as an employee object in employeeList
+            {
+                split = splitUp.split(","); //splits the employees by ,
+                birth_date = DateFormatter.dateFormat(split[1]);
+                hire_date = DateFormatter.dateFormat(split[5]);
+                employeeList.add(new Employee(Integer.parseInt(split[0]), birth_date, split[2].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[3].replaceAll("[#@{}%$£!&*+.^:,]","").trim(), split[4].charAt(0), hire_date)); //adds the created employee object in the list
+            }
+
+            return employeeList; // return the employee object list
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return null;
         }
 
-        return employeeList; // return the employee object list
     }
 
 }
