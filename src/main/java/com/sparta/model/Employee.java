@@ -1,8 +1,9 @@
 package com.sparta.model;
 
-import java.util.Date;
 
 public class Employee implements Comparable<Employee>{
+
+
 
     // Employee fields
     private int emp_no;
