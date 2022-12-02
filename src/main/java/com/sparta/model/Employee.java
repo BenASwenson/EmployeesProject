@@ -1,8 +1,10 @@
 package com.sparta.model;
 
+import com.sparta.view.Job;
+
 import java.util.Date;
 
-public class Employee implements Comparable<Employee>{
+public class Employee implements Comparable<Employee>, Job {
 
     // Employee fields
     private int emp_no;
@@ -77,5 +79,10 @@ public class Employee implements Comparable<Employee>{
     @Override
     public int compareTo(Employee o) {
         return this.last_name.compareTo(o.last_name);
+    }
+
+    @Override
+    public void job() {
+        System.out.println("I am a Standard employee");
     }
 }
